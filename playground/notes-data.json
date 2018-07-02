@@ -1,1 +1,16 @@
-[{"title":"Note2","body":"second note data"},{"title":"Note1","body":"Hello world"},{"title":"Note3","body":"Hello world three"},{"title":"Note4","body":"Data for note four"},{"title":"Note5","body":"Data for note five"}]
+[{
+    "title": "Note2",
+    "body": "second note data"
+}, {
+    "title": "Note1",
+    "body": "Hello world"
+}, {
+    "title": "Note3",
+    "body": "Hello world three"
+}, {
+    "title": "Note4",
+    "body": "Data for note four"
+}, {
+    "title": "Note5",
+    "body": "Data for note five"
+}]
