@@ -6,29 +6,21 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
-const argv =yargs.argv;
+const argv = yargs.argv;
 
 const command = process.argv[2];
 const title = argv.title;
 const body = argv.body;
 
-if(command === 'add')
-{ 
-    notes.addNote(title,body);
-}
-else if(command === 'list')
-{
+
+if (command === 'add') {
+    notes.addNote(title, body);
+} else if (command === 'list') {
     notes.getAll();
-}
-else if(command === 'read')
-{
+} else if (command === 'read') {
     notes.getNote(title);
-}
-else if(command === 'remove')
-{
+} else if (command === 'remove') {
     notes.removeNote(title);
-}
-else
-{ 
-    console.log('Command not recognized'); 
+} else {
+    console.log('Command not recognized');
 }
