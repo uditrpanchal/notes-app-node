@@ -2,6 +2,7 @@ console.log('Starting notes.js');
 
 const fs = require('fs');
 
+//Fetch existing notes from notes-data.json and returns the JSON data object after converting from string.
 var fetchNotes = () => {
     try {
         var noteString = fs.readFileSync('./playground/notes-data.json');
@@ -12,9 +13,12 @@ var fetchNotes = () => {
     }
 };
 
-var saveNotes = notes => {
+
+//Saves the notes in string to notes-data.json
+var saveNotes = (notes) => {
     fs.writeFileSync('./playground/notes-data.json', JSON.stringify(notes));
 };
+
 
 var addNote = (title, body) => {
     var notes = fetchNotes();
@@ -38,6 +42,14 @@ var getAll = () => {
 };
 
 var removeNote = title => {
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter((note)=>{
+        return note.title !== title;
+    });
+    saveNotes(filteredNotes);
+}
+/*
+var removeNote = title => {
     let allNotes = fetchNotes();
 
     allNotes.forEach((data, index) => {
@@ -50,6 +62,7 @@ var removeNote = title => {
         saveNotes(allNotes);
     }
 };
+*/
 
 var getNote = title => {
     let allNotes = fetchNotes();
