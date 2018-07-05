@@ -8,13 +8,12 @@ const fs = require('fs');
  * Fetch Notes
  */
 var fetchNotes = () => {
-	try {
-		var noteString = fs.readFileSync('./playground/notes-data.json');
-
-		return JSON.parse(noteString);
-	} catch (e) {
-		return [];
-	}
+    try {
+        var noteString = fs.readFileSync('./playground/notes-data.json');
+        return JSON.parse(noteString);
+    } catch (e) {
+        return [];
+    }
 };
 
 /*
@@ -22,7 +21,7 @@ var fetchNotes = () => {
  * @param {JSON Object} notes
  */
 var saveNotes = notes => {
-	fs.writeFileSync('./playground/notes-data.json', JSON.stringify(notes));
+    fs.writeFileSync('./playground/notes-data.json', JSON.stringify(notes));
 };
 
 /*
@@ -31,27 +30,27 @@ var saveNotes = notes => {
  * @param {string} body
  */
 var addNote = (title, body) => {
-	var notes = fetchNotes();
-	var note = {
-		title: title,
-		body: body,
-	};
+    var notes = fetchNotes();
+    var note = {
+        title: title,
+        body: body,
+    };
 
-	var duplicateNotes = notes.filter(note => {
-		return note.title === title;
-	});
+    var duplicateNotes = notes.filter(note => {
+        return note.title === title;
+    });
 
-	if (duplicateNotes.length === 0) {
-		notes.push(note);
-		saveNotes(notes);
-	}
+    if (duplicateNotes.length === 0) {
+        notes.push(note);
+        saveNotes(notes);
+    }
 };
 
 /*
  * Get All Notes
  */
 var getAll = () => {
-	console.log(fetchNotes());
+    console.log(fetchNotes());
 };
 
 /*
@@ -59,18 +58,18 @@ var getAll = () => {
  * @param {string} title
  */
 var getNote = title => {
-	let allNotes = fetchNotes();
-	let readFlag = 0;
-	allNotes.forEach((data, index) => {
-		if (data.title === title) {
-			console.log(allNotes[index]);
-			readFlag = 1;
-		}
-	});
+    let allNotes = fetchNotes();
+    let readFlag = 0;
+    allNotes.forEach((data, index) => {
+        if (data.title === title) {
+            console.log(allNotes[index]);
+            readFlag = 1;
+        }
+    });
 
-	if (readFlag === 0) {
-		console.log(`${title} doesnot exist`);
-	}
+    if (readFlag === 0) {
+        console.log(`${title} doesnot exist`);
+    }
 };
 
 /*
@@ -78,11 +77,11 @@ var getNote = title => {
  * @param {string} title
  */
 var removeNote = title => {
-	let notes = fetchNotes();
-	let filteredNotes = notes.filter(note => {
-		return note.title !== title;
-	});
-	saveNotes(filteredNotes);
+    let notes = fetchNotes();
+    let filteredNotes = notes.filter(note => {
+        return note.title !== title;
+    });
+    saveNotes(filteredNotes);
 };
 /*
 var removeNote = title => {
@@ -101,8 +100,8 @@ var removeNote = title => {
 */
 
 module.exports = {
-	addNote,
-	getAll,
-	removeNote,
-	getNote,
+    addNote,
+    getAll,
+    removeNote,
+    getNote,
 };
