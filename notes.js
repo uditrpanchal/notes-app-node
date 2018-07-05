@@ -1,8 +1,12 @@
+'use strict';
+
 console.log('Starting notes.js');
 
 const fs = require('fs');
 
-/*------------------- Fetch and Save methods------------------------------------ */
+/**
+ * Fetch Notes
+ */
 var fetchNotes = () => {
 	try {
 		var noteString = fs.readFileSync('./playground/notes-data.json');
@@ -13,17 +17,24 @@ var fetchNotes = () => {
 	}
 };
 
+/**
+ * Saves the notes
+ * @param {JSON Object} notes
+ */
 var saveNotes = notes => {
 	fs.writeFileSync('./playground/notes-data.json', JSON.stringify(notes));
 };
-/*----------------------------------------------------------------------------- */
 
-/*-------------------ADD, REMOVE, READ, GET ALL NOTES------------------------- */
+/**
+ * Add Notes
+ * @param {string} title
+ * @param {string} body
+ */
 var addNote = (title, body) => {
 	var notes = fetchNotes();
 	var note = {
-		title:title,
-		body:body,
+		title: title,
+		body: body,
 	};
 
 	var duplicateNotes = notes.filter(note => {
@@ -36,10 +47,17 @@ var addNote = (title, body) => {
 	}
 };
 
+/**
+ * Get All Notes
+ */
 var getAll = () => {
 	console.log(fetchNotes());
 };
 
+/**
+ * Get note by title
+ * @param {string} title
+ */
 var getNote = title => {
 	let allNotes = fetchNotes();
 	let readFlag = 0;
@@ -55,6 +73,10 @@ var getNote = title => {
 	}
 };
 
+/**
+ * Remove note by title
+ * @param {string} title
+ */
 var removeNote = title => {
 	let notes = fetchNotes();
 	let filteredNotes = notes.filter(note => {
@@ -77,7 +99,6 @@ var removeNote = title => {
     }
 };
 */
-/*----------------------------------------------------------------------------- */
 
 module.exports = {
 	addNote,
