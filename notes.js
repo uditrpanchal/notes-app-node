@@ -17,7 +17,7 @@ var fetchNotes = () => {
 	}
 };
 
-/**
+/*
  * Saves the notes
  * @param {JSON Object} notes
  */
@@ -25,7 +25,7 @@ var saveNotes = notes => {
 	fs.writeFileSync('./playground/notes-data.json', JSON.stringify(notes));
 };
 
-/**
+/*
  * Add Notes
  * @param {string} title
  * @param {string} body
@@ -47,14 +47,14 @@ var addNote = (title, body) => {
 	}
 };
 
-/**
+/*
  * Get All Notes
  */
 var getAll = () => {
 	console.log(fetchNotes());
 };
 
-/**
+/*
  * Get note by title
  * @param {string} title
  */
@@ -73,7 +73,7 @@ var getNote = title => {
 	}
 };
 
-/**
+/*
  * Remove note by title
  * @param {string} title
  */
